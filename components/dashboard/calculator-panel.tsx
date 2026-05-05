@@ -67,18 +67,18 @@ export function CalculatorPanel() {
 
   return (
     <Card className="h-full">
-      <CardHeader className="pb-2">
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Calculator className="h-5 w-5 text-primary" />
+      <CardHeader className="pb-1">
+        <CardTitle className="flex items-center gap-2 text-sm">
+          <Calculator className="h-4 w-4 text-primary" />
           Mass Transfer Analysis
         </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          kLa and OTE mass transfer insights
+        <p className="text-xs text-muted-foreground">
+          kLa & OTE calculator
         </p>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4">
         {/* Input Fields */}
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2">
           {inputFields.map(({ key, label, unit, icon: Icon }) => (
             <div key={key} className="space-y-2">
               <Label htmlFor={key} className="text-sm flex items-center gap-2">
@@ -129,23 +129,23 @@ export function CalculatorPanel() {
         </div>
 
         {/* Results Display */}
-        <div className="rounded-xl bg-linear-to-br from-primary/5 to-accent/5 p-4 ring-1 ring-primary/20">
-          <p className="text-sm font-medium text-muted-foreground mb-3">Calculated Results</p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-lg bg-background/50 p-3">
+        <div className="rounded-lg bg-linear-to-br from-primary/5 to-accent/5 p-2 ring-1 ring-primary/20">
+          <p className="text-xs font-medium text-muted-foreground mb-2">Results</p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            <div className="rounded-lg bg-background/50 p-2">
               <p className="text-xs text-muted-foreground mb-1">
-                kLa (Mass Transfer Coefficient)
+                kLa
               </p>
-              <p className="font-mono text-2xl font-bold text-primary">
+              <p className="font-mono text-xl font-bold text-primary">
                 {results.kLa.toFixed(6)}
               </p>
               <p className="text-xs text-muted-foreground mt-1">min⁻¹</p>
             </div>
-            <div className="rounded-lg bg-background/50 p-3">
+            <div className="rounded-lg bg-background/50 p-2">
               <p className="text-xs text-muted-foreground mb-1">
-                OTE (Transfer Efficiency)
+                OTE
               </p>
-              <p className="font-mono text-2xl font-bold text-chart-3">
+              <p className="font-mono text-xl font-bold text-chart-3">
                 {results.OTE.toFixed(2)}
               </p>
               <p className="text-xs text-muted-foreground mt-1">%</p>
@@ -153,25 +153,8 @@ export function CalculatorPanel() {
           </div>
         </div>
 
-        {/* Tooltips */}
-        <div className="space-y-2 text-xs text-muted-foreground">
-          <details className="group">
-            <summary className="cursor-pointer hover:text-foreground transition-colors">
-              What is kLa?
-            </summary>
-            <p className="mt-2 pl-4 border-l-2 border-border">
-              The volumetric mass transfer coefficient (kLa) represents the rate at which oxygen transfers from gas to liquid phase. Higher values indicate more efficient oxygen transfer.
-            </p>
-          </details>
-          <details className="group">
-            <summary className="cursor-pointer hover:text-foreground transition-colors">
-              What is OTE?
-            </summary>
-            <p className="mt-2 pl-4 border-l-2 border-border">
-              Oxygen Transfer Efficiency (OTE) is the percentage of oxygen supplied that actually dissolves into the water. It&apos;s a key metric for evaluating aeration system performance.
-            </p>
-          </details>
-        </div>
+       
+        
       </CardContent>
     </Card>
   )
