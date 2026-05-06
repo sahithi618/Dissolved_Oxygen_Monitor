@@ -47,6 +47,7 @@ export function CalculatorPanel() {
       inputs.initialDO,
       inputs.flowRate,
       o2Conc,
+      inputs.time,
     )
 
     console.log('Inputs:', inputs)

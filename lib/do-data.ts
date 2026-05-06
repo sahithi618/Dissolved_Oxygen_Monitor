@@ -133,21 +133,22 @@ export function calculateKLa(
 }
 
 // Calculate Oxygen Transfer Efficiency (OTE)
-// OTE = (kLa * V * (C* - C0)) / (Q * O2_in * ρ_O2) * 100
+// OTE = (kLa * V * (C* - C0) * time) / (Q * O2_in * ρ_O2 * time) * 100
 export function calculateOTE(
   kLa: number,
   volume: number,        // liters
   cStar: number,         // mg/L
   c0: number,            // mg/L (initial DO)
   flowRate: number,      // LPM
-  o2Fraction: number     // 0.21 for air, 1.0 for pure O2
+  o2Fraction: number,    // 0.21 for air, 1.0 for pure O2
+  time: number           // minutes
 ): number {
   const rhoO2 = 1.429 // g/L density of O2 at STP
-  const o2MassFlowRate = flowRate * o2Fraction * rhoO2 * 1000 // mg/min
+  const o2MassFlowRate = flowRate * o2Fraction * rhoO2 * 1000 * time // mg
   
   if (o2MassFlowRate === 0) return 0
   
-  const otr = volume * (cStar - c0) // mg/min (kLa already in min⁻¹)
+  const otr = volume * (cStar - c0)  // mg
   const ote = (otr / o2MassFlowRate) * 100
   
   return Math.min(ote, 100) // Cap at 100%
