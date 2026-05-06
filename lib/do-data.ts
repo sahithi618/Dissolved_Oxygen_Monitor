@@ -147,7 +147,7 @@ export function calculateOTE(
   
   if (o2MassFlowRate === 0) return 0
   
-  const otr = kLa * volume * (cStar - c0) // mg/min (kLa already in min⁻¹)
+  const otr = volume * (cStar - c0) // mg/min (kLa already in min⁻¹)
   const ote = (otr / o2MassFlowRate) * 100
   
   return Math.min(ote, 100) // Cap at 100%
