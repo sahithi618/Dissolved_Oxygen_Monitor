@@ -24,7 +24,7 @@ export function DOChart({ data, currentIndex }: DOChartProps) {
   const visibleData = useMemo(() => {
     return data.slice(0, currentIndex + 1).map(d => ({
       ...d,
-      time: d.timeSeconds,
+      time: d.timeMins,
     }))
   }, [data, currentIndex])
 
@@ -68,7 +68,7 @@ export function DOChart({ data, currentIndex }: DOChartProps) {
                 fontSize={12}
                 tickLine={false}
                 axisLine={{ stroke: 'oklch(0.28 0.01 250)' }}
-                label={{ value: 'Time (seconds)', position: 'insideBottom', offset: -10, fill: 'oklch(0.65 0 0)' }}
+                label={{ value: 'Time (minutes)', position: 'insideBottom', offset: -10, fill: 'oklch(0.65 0 0)' }}
               />
               
               <YAxis
@@ -91,7 +91,7 @@ export function DOChart({ data, currentIndex }: DOChartProps) {
                 labelStyle={{ color: 'oklch(0.95 0 0)' }}
                 itemStyle={{ color: 'oklch(0.72 0.19 175)' }}
                 formatter={(value: number) => [`${value.toFixed(2)} mg/L`, 'DO']}
-                labelFormatter={(label) => `Time: ${label}s`}
+                labelFormatter={(label) => `Time: ${label} min`}
               />
               
               <Legend

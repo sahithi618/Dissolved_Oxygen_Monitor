@@ -63,22 +63,22 @@ export default function Dashboard() {
     <div className="min-h-screen bg-background">
       <Header isStreaming={isStreaming} currentTime={currentTime} />
       
-      <main className="container mx-auto px-4 py-4 h-[calc(100vh-6rem)] overflow-hidden">
-        <div className="grid h-full gap-4 lg:grid-cols-12 md:grid-cols-1">
+      <main className="container mx-auto px-4 py-4 min-h-screen">
+        <div className="grid h-full gap-4 grid-cols-1 lg:grid-cols-12">
           {/* Left side - Chart Only */}
-          <div className="lg:col-span-7 md:col-span-1 min-h-0">
+          <div className="lg:col-span-7 min-h-[24rem] lg:min-h-0">
             <DOChart data={data} currentIndex={currentIndex} />
           </div>
 
           {/* Right side - Calculator */}
-          <div className="lg:col-span-5 md:col-span-1 flex flex-col gap-2 h-full min-h-0">
+          <div className="lg:col-span-5 flex flex-col gap-2 min-h-[24rem] lg:min-h-0">
             <div className="flex-1 min-h-0 overflow-hidden">
               <CalculatorPanel />
             </div>
             <Button 
               variant="outline" 
               onClick={resetPlayback} 
-              className="w-full gap-2 h-8 shrink-0"
+              className="w-full gap-2 h-10 shrink-0"
             >
               <RotateCcw className="h-4 w-4" />
               Reset Demo

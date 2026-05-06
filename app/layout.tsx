@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   title: 'IoT Dissolved Oxygen Monitoring System',
   description: 'Real-time oxygen transfer analysis dashboard for dissolved oxygen monitoring with kLa and OTE calculations',
   generator: 'v0.app',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+  },
   icons: {
     icon: [
       {
